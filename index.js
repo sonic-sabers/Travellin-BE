@@ -42,6 +42,6 @@ app.use("/api/itinerary", itineraryRoutes);
 
 app.use(errorMiddleware);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
