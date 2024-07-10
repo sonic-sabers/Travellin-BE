@@ -91,6 +91,14 @@ ItinerarySchema.virtual('itineraryId').get(function () {
   return this._id.toHexString();
 });
 
+ItinerarySchema.virtual('documentUrl').get(function () {
+  return this.document;
+});
+
+ItinerarySchema.virtual('publicUrl').get(function () {
+  return `https://your-public-url.com/itineraries/${this._id}`;
+});
+
 ItinerarySchema.set('toJSON', {
   virtuals: true
 });

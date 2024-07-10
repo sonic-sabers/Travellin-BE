@@ -1,12 +1,7 @@
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-import User from '../models/User.js';
-import { createError } from '../middlewares/error.js';
-import { generateAccessToken, generateRefreshToken } from '../utils/token.js';
 import { signupService, signinService } from '../services/authService.js';
-
-dotenv.config();
+import { generateAccessToken, generateRefreshToken } from '../utils/token.js';
+import jwt from 'jsonwebtoken';
+import { createError } from '../middlewares/error.js';
 
 export const signup = async (req, res, next) => {
   try {

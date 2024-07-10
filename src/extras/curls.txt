@@ -1,0 +1,142 @@
+1. Sign Up
+
+sh
+Copy code
+
+curl -X POST http://localhost:6000/api/auth/signup \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123",
+  "phoneNo": "1234567890"
+}'
+2. Sign In
+
+sh
+Copy code
+
+curl -X POST http://localhost:6000/api/auth/signin \
+-H "Content-Type: application/json" \
+-d '{
+  "email": "john@example.com",
+  "password": "password123"
+}'
+3. Create Itinerary
+
+sh
+Copy code
+
+curl -X POST http://localhost:6000/api/itinerary/add \
+-H "Content-Type: application/json" \
+-H "access-token: YOUR_ACCESS_TOKEN" \
+-d '{
+  "title": "Summer Vacation",
+  "description": "Trip to the beach",
+  "startDate": "2024-07-01",
+  "endDate": "2024-07-15",
+  "destinations": [
+    {
+      "location": "Miami",
+      "arrivalDate": "2024-07-01",
+      "departureDate": "2024-07-05",
+      "notes": "Beach resort"
+    }
+  ]
+}'
+4. Edit Itinerary
+
+sh
+Copy code
+
+curl -X PUT http://localhost:6000/api/itinerary/edit/YOUR_ITINERARY_ID \
+-H "Content-Type: application/json" \
+-H "access-token: YOUR_ACCESS_TOKEN" \
+-d '{
+  "title": "Summer Vacation - Updated",
+  "description": "Trip to the beach and mountains",
+  "startDate": "2024-07-01",
+  "endDate": "2024-07-20",
+  "destinations": [
+    {
+      "location": "Miami",
+      "arrivalDate": "2024-07-01",
+      "departureDate": "2024-07-05",
+      "notes": "Beach resort"
+    },
+    {
+      "location": "Aspen",
+      "arrivalDate": "2024-07-06",
+      "departureDate": "2024-07-15",
+      "notes": "Mountain resort"
+    }
+  ]
+}'
+5. Delete Itinerary
+
+sh
+Copy code
+
+curl -X DELETE http://localhost:6000/api/itinerary/remove/YOUR_ITINERARY_ID \
+-H "access-token: YOUR_ACCESS_TOKEN"
+6. Get User Itinerary List
+
+sh
+Copy code
+
+curl -X GET "http://localhost:6000/api/itinerary/user?page=1&pageSize=10" \
+-H "access-token: YOUR_ACCESS_TOKEN"
+7. Get Itinerary Details
+
+sh
+Copy code
+
+curl -X GET http://localhost:6000/api/itinerary/details/YOUR_ITINERARY_ID \
+-H "access-token: YOUR_ACCESS_TOKEN"
+8. Search Itineraries
+
+sh
+Copy code
+
+curl -X GET "http://localhost:6000/api/itinerary/search?search=beach&page=1&pageSize=10" \
+-H "access-token: YOUR_ACCESS_TOKEN"
+9. Upload Itinerary Document
+
+sh
+Copy code
+
+curl -X POST http://localhost:6000/api/itinerary/upload/YOUR_ITINERARY_ID \
+-H "access-token: YOUR_ACCESS_TOKEN" \
+-F "file=@/path/to/your/document.pdf"
+10. Upload Document to Destination
+
+sh
+Copy code
+
+curl -X POST http://localhost:6000/api/itinerary/upload/destination/YOUR_ITINERARY_ID/YOUR_DESTINATION_ID \
+-H "access-token: YOUR_ACCESS_TOKEN" \
+-F "file=@/path/to/your/document.pdf"
+11. Upload Document to Accommodation
+
+sh
+Copy code
+
+curl -X POST http://localhost:6000/api/itinerary/upload/accommodation/YOUR_ITINERARY_ID/YOUR_DESTINATION_ID/YOUR_ACCOMMODATION_ID \
+-H "access-token: YOUR_ACCESS_TOKEN" \
+-F "file=@/path/to/your/document.pdf"
+12. Upload Document to Transportation
+
+sh
+Copy code
+
+curl -X POST http://localhost:6000/api/itinerary/upload/transportation/YOUR_ITINERARY_ID/YOUR_DESTINATION_ID/YOUR_TRANSPORTATION_ID \
+-H "access-token: YOUR_ACCESS_TOKEN" \
+-F "file=@/path/to/your/document.pdf"
+13. Upload Document to Activity
+
+sh
+Copy code
+
+curl -X POST http://localhost:6000/api/itinerary/upload/activity/YOUR_ITINERARY_ID/YOUR_DESTINATION_ID/YOUR_ACTIVITY_ID \
+-H "access-token: YOUR_ACCESS_TOKEN" \
+-F "file=@/path/to/your/document.pdf"
